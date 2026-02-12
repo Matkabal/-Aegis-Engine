@@ -1,10 +1,56 @@
 #include "engine/assets/gltf_loader.h"
 
+#include <cmath>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
 
 namespace engine::assets {
+
+namespace {
+
+MeshData make_cone_mesh(const int segments) {
+  MeshData mesh{};
+  if (segments < 3) {
+    return mesh;
+  }
+
+  constexpr float radius = 0.35F;
+  constexpr float half_height = 0.45F;
+
+  // Apex and base center.
+  mesh.vertices.push_back(Vertex{{0.0F, half_height, 0.0F}});
+  mesh.vertices.push_back(Vertex{{0.0F, -half_height, 0.0F}});
+
+  // Base ring.
+  for (int i = 0; i < segments; ++i) {
+    const float t = (2.0F * 3.14159265359F * static_cast<float>(i)) / static_cast<float>(segments);
+    mesh.vertices.push_back(Vertex{{radius * std::cos(t), -half_height, radius * std::sin(t)}});
+  }
+
+  // Side triangles.
+  for (int i = 0; i < segments; ++i) {
+    const uint32_t curr = 2U + static_cast<uint32_t>(i);
+    const uint32_t next = 2U + static_cast<uint32_t>((i + 1) % segments);
+    mesh.indices.push_back(0U);
+    mesh.indices.push_back(curr);
+    mesh.indices.push_back(next);
+  }
+
+  // Base cap triangles.
+  for (int i = 0; i < segments; ++i) {
+    const uint32_t curr = 2U + static_cast<uint32_t>(i);
+    const uint32_t next = 2U + static_cast<uint32_t>((i + 1) % segments);
+    mesh.indices.push_back(1U);
+    mesh.indices.push_back(next);
+    mesh.indices.push_back(curr);
+  }
+
+  mesh.bounds = compute_aabb(mesh.vertices);
+  return mesh;
+}
+
+} // namespace
 
 GltfLoadResult GltfLoader::load(const std::string& path) {
   GltfLoadResult result{};
@@ -35,18 +81,8 @@ GltfLoadResult GltfLoader::load(const std::string& path) {
     return result;
   }
 
-  // M2 base loader: parse validation + create a first internal mesh representation.
-  MeshData mesh{};
-  mesh.vertices = {
-      {{-0.5F, -0.5F, 0.0F}},
-      {{0.5F, -0.5F, 0.0F}},
-      {{0.0F, 0.5F, 0.0F}},
-  };
-  mesh.indices = {0, 1, 2};
-  mesh.bounds = compute_aabb(mesh.vertices);
-
   result.ok = true;
-  result.meshes.push_back(mesh);
+  result.meshes.push_back(make_cone_mesh(24));
   return result;
 }
 

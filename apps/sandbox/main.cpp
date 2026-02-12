@@ -184,7 +184,7 @@ int main() {
 
   const engine::runtime::Entity e1 = scene.create_entity();
   auto& t1 = scene.transform(e1);
-  t1.position = {0.4F, 0.0F, 0.0F};
+  t1.position = {0.5F, 0.0F, -0.8F};
   t1.scale = {1.0F, 1.0F, 1.0F};
   t1.mark_dirty();
   scene.add_mesh_component(e1, engine::runtime::MeshComponent{mesh_handle});

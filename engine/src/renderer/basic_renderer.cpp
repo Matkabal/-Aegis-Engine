@@ -4,8 +4,10 @@
 #include "engine/math/vec4.h"
 
 #include <algorithm>
+#include <cmath>
 #include <cstdlib>
 #include <string>
+#include <vector>
 
 #include "SDL.h"
 
@@ -154,49 +156,63 @@ void BasicRenderer::submit_mesh(const assets::MeshData* mesh, const math::Mat4& 
     return;
   }
 
-  (void)camera;
-
   constexpr math::Vec3 fallback_vertices[3] = {
-      {-0.12F, -0.12F, 0.0F},
-      {0.12F, -0.12F, 0.0F},
-      {0.0F, 0.14F, 0.0F},
+      {-0.35F, -0.30F, 0.20F},
+      {0.35F, -0.25F, -0.65F},
+      {0.0F, 0.40F, 0.10F},
   };
+  constexpr uint32_t fallback_indices[3] = {0U, 1U, 2U};
+
   const math::Vec3* vertices = fallback_vertices;
   size_t vertex_count = 3;
+  const uint32_t* indices = fallback_indices;
+  size_t index_count = 3;
   if (mesh != nullptr && mesh->vertices.size() >= 3) {
     vertices = &mesh->vertices[0].position;
     vertex_count = mesh->vertices.size();
+    if (mesh->indices.size() >= 3) {
+      indices = mesh->indices.data();
+      index_count = mesh->indices.size();
+    }
   }
 
-  SDL_Vertex verts[3]{};
-  for (int i = 0; i < 3; ++i) {
-    const size_t idx = (mesh != nullptr && !mesh->indices.empty() && static_cast<size_t>(i) < mesh->indices.size())
-                           ? static_cast<size_t>(mesh->indices[static_cast<size_t>(i)])
-                           : static_cast<size_t>(i);
-    if (idx >= vertex_count) {
-      return;
+  const math::Mat4 vp = math::multiply(camera.projection, camera.view);
+  const math::Mat4 mvp = math::multiply(vp, world_matrix);
+
+  std::vector<SDL_Vertex> verts(vertex_count);
+  for (size_t i = 0; i < vertex_count; ++i) {
+    const math::Vec4 model{vertices[i].x, vertices[i].y, vertices[i].z, 1.0F};
+    math::Vec4 clip = math::multiply_vec4(mvp, model);
+    if (std::fabs(clip.w) < 0.0001F) {
+      clip.w = (clip.w < 0.0F) ? -0.0001F : 0.0001F;
     }
 
-    const float x = vertices[idx].x;
-    const float y = vertices[idx].y;
-    const float z = vertices[idx].z;
-    const math::Vec4 model{x, y, z, 1.0F};
-    const math::Vec4 transformed = math::multiply_vec4(world_matrix, model);
-    const float sx = transformed.x;
-    const float sy = transformed.y;
-    const math::Vec4 clip{x, y, 0.0F, 1.0F};
-    (void)clip;
-    const math::Vec4 screen_clip{sx, sy, 0.0F, 1.0F};
+    verts[i].position = to_screen(clip, width_, height_);
 
-    verts[i].position = to_screen(screen_clip, width_, height_);
-    verts[i].color = SDL_Color{255, 200, 80, 255};
+    const float depth = std::clamp((clip.z / clip.w + 1.0F) * 0.5F, 0.0F, 1.0F);
+    const Uint8 shade = static_cast<Uint8>(220.0F - (depth * 100.0F));
+    verts[i].color = SDL_Color{255, shade, 90, 255};
     verts[i].tex_coord = SDL_FPoint{0.0F, 0.0F};
   }
 
-  SDL_Renderer* renderer = reinterpret_cast<SDL_Renderer*>(sdl_renderer_);
-  SDL_RenderGeometry(renderer, nullptr, verts, 3, nullptr, 0);
+  std::vector<int> sdl_indices;
+  sdl_indices.reserve(index_count);
+  for (size_t i = 0; i < index_count; ++i) {
+    if (static_cast<size_t>(indices[i]) >= vertex_count) {
+      return;
+    }
+    sdl_indices.push_back(static_cast<int>(indices[i]));
+  }
 
-  draw_calls_ += 1;
+  SDL_Renderer* renderer = reinterpret_cast<SDL_Renderer*>(sdl_renderer_);
+  SDL_RenderGeometry(renderer,
+                     nullptr,
+                     verts.data(),
+                     static_cast<int>(verts.size()),
+                     sdl_indices.data(),
+                     static_cast<int>(sdl_indices.size()));
+
+  draw_calls_ += static_cast<uint32_t>(sdl_indices.size() / 3U);
 }
 
 void BasicRenderer::end_frame() {
