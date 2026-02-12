@@ -1,0 +1,10 @@
+/mnt/d/engine-game-project/build/CMakeFiles/edit_cache.dir
+/mnt/d/engine-game-project/build/CMakeFiles/rebuild_cache.dir
+/mnt/d/engine-game-project/build/engine/CMakeFiles/engine.dir
+/mnt/d/engine-game-project/build/engine/CMakeFiles/edit_cache.dir
+/mnt/d/engine-game-project/build/engine/CMakeFiles/rebuild_cache.dir
+/mnt/d/engine-game-project/build/apps/CMakeFiles/edit_cache.dir
+/mnt/d/engine-game-project/build/apps/CMakeFiles/rebuild_cache.dir
+/mnt/d/engine-game-project/build/apps/sandbox/CMakeFiles/sandbox.dir
+/mnt/d/engine-game-project/build/apps/sandbox/CMakeFiles/edit_cache.dir
+/mnt/d/engine-game-project/build/apps/sandbox/CMakeFiles/rebuild_cache.dir
