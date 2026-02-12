@@ -178,6 +178,7 @@ apps/sandbox/CMakeFiles/sandbox.dir/main.cpp.o: \
  /usr/include/c++/13/bits/unique_lock.h \
  /mnt/d/engine-game-project/engine/include/engine/engine.h \
  /mnt/d/engine-game-project/engine/include/engine/input/input_state.h \
+ /mnt/d/engine-game-project/engine/include/engine/math/vec2.h \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
  /usr/include/c++/13/bits/hashtable.h \
@@ -186,45 +187,10 @@ apps/sandbox/CMakeFiles/sandbox.dir/main.cpp.o: \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/erase_if.h \
- /mnt/d/engine-game-project/engine/include/engine/time/frame_timer.h \
- /usr/include/c++/13/chrono /usr/include/c++/13/sstream \
- /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/vector \
- /usr/include/c++/13/bits/stl_uninitialized.h \
- /usr/include/c++/13/bits/stl_vector.h \
- /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/bits/stl_algo.h \
- /usr/include/c++/13/bits/algorithmfwd.h \
- /usr/include/c++/13/bits/stl_heap.h \
- /usr/include/c++/13/bits/uniform_int_dist.h \
- /usr/include/c++/13/bits/stl_tempbuf.h \
- /usr/include/c++/13/bits/shared_ptr.h \
- /usr/include/c++/13/bits/shared_ptr_base.h \
- /usr/include/c++/13/bits/allocated_ptr.h \
- /usr/include/c++/13/bits/unique_ptr.h \
- /usr/include/c++/13/ext/concurrence.h /usr/include/c++/13/bits/align.h \
- /usr/include/c++/13/bits/chrono_io.h /usr/include/c++/13/iomanip \
- /usr/include/c++/13/locale \
- /usr/include/c++/13/bits/locale_facets_nonio.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/13/bits/locale_facets_nonio.tcc \
- /usr/include/c++/13/bits/locale_conv.h \
- /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/format \
- /usr/include/c++/13/array /usr/include/c++/13/charconv \
- /usr/include/c++/13/optional /usr/include/c++/13/span \
- /usr/include/c++/13/variant /usr/include/c++/13/bits/ranges_algobase.h \
- /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL.h \
- /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_main.h \
- /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_stdinc.h \
- /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_config.h \
- /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_platform.h \
- /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/begin_code.h \
- /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/close_code.h \
- /usr/include/c++/13/stdlib.h /usr/include/string.h \
- /usr/include/strings.h \
- /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
- /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
- /usr/include/inttypes.h /usr/include/c++/13/math.h \
+ /mnt/d/engine-game-project/engine/include/engine/renderer/basic_renderer.h \
+ /mnt/d/engine-game-project/engine/include/engine/math/mat4.h \
+ /mnt/d/engine-game-project/engine/include/engine/math/vec4.h \
+ /mnt/d/engine-game-project/engine/include/engine/math/vec3.h \
  /usr/include/c++/13/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -246,7 +212,54 @@ apps/sandbox/CMakeFiles/sandbox.dir/main.cpp.o: \
  /usr/include/c++/13/tr1/modified_bessel_func.tcc \
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
- /usr/include/c++/13/tr1/riemann_zeta.tcc \
+ /usr/include/c++/13/tr1/riemann_zeta.tcc /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/stl_heap.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/c++/13/bits/stl_tempbuf.h \
+ /usr/include/c++/13/bits/ranges_algo.h \
+ /usr/include/c++/13/bits/ranges_algobase.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/iterator \
+ /usr/include/c++/13/bits/stream_iterator.h \
+ /mnt/d/engine-game-project/engine/include/engine/runtime/camera.h \
+ /mnt/d/engine-game-project/engine/include/engine/runtime/transform.h \
+ /mnt/d/engine-game-project/engine/include/engine/time/frame_timer.h \
+ /usr/include/c++/13/chrono /usr/include/c++/13/sstream \
+ /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/vector \
+ /usr/include/c++/13/bits/stl_uninitialized.h \
+ /usr/include/c++/13/bits/stl_vector.h \
+ /usr/include/c++/13/bits/stl_bvector.h \
+ /usr/include/c++/13/bits/vector.tcc \
+ /usr/include/c++/13/bits/shared_ptr.h \
+ /usr/include/c++/13/bits/shared_ptr_base.h \
+ /usr/include/c++/13/bits/allocated_ptr.h \
+ /usr/include/c++/13/bits/unique_ptr.h \
+ /usr/include/c++/13/ext/concurrence.h /usr/include/c++/13/bits/align.h \
+ /usr/include/c++/13/bits/chrono_io.h /usr/include/c++/13/iomanip \
+ /usr/include/c++/13/locale \
+ /usr/include/c++/13/bits/locale_facets_nonio.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/13/bits/locale_conv.h \
+ /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/format \
+ /usr/include/c++/13/array /usr/include/c++/13/charconv \
+ /usr/include/c++/13/optional /usr/include/c++/13/span \
+ /usr/include/c++/13/variant \
+ /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL.h \
+ /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_main.h \
+ /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_stdinc.h \
+ /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_config.h \
+ /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_platform.h \
+ /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/begin_code.h \
+ /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/close_code.h \
+ /usr/include/c++/13/stdlib.h /usr/include/string.h \
+ /usr/include/strings.h \
+ /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+ /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+ /usr/include/inttypes.h /usr/include/c++/13/math.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
  /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_assert.h \
  /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_atomic.h \
@@ -390,7 +403,4 @@ apps/sandbox/CMakeFiles/sandbox.dir/main.cpp.o: \
  /usr/include/X11/Xfuncproto.h /usr/include/X11/Xosdefs.h \
  /usr/include/X11/Xatom.h \
  /home/matkabal/vcpkg/installed/x64-linux/include/bgfx/bgfx.h \
- /home/matkabal/vcpkg/installed/x64-linux/include/bgfx/defines.h \
- /home/matkabal/vcpkg/installed/x64-linux/include/bgfx/platform.h \
- /home/matkabal/vcpkg/installed/x64-linux/include/bgfx/bgfx.h \
- /usr/include/c++/13/iostream
+ /home/matkabal/vcpkg/installed/x64-linux/include/bgfx/defines.h

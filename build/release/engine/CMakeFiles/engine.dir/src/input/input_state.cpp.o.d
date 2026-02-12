@@ -2,6 +2,7 @@ engine/CMakeFiles/engine.dir/src/input/input_state.cpp.o: \
  /mnt/d/engine-game-project/engine/src/input/input_state.cpp \
  /usr/include/stdc-predef.h \
  /mnt/d/engine-game-project/engine/include/engine/input/input_state.h \
+ /mnt/d/engine-game-project/engine/include/engine/math/vec2.h \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \

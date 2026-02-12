@@ -202,6 +202,78 @@ src/input/input_state.cpp.s:
 	cd /mnt/d/engine-game-project/build/debug && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/input/input_state.cpp.s
 .PHONY : src/input/input_state.cpp.s
 
+src/renderer/basic_renderer.o: src/renderer/basic_renderer.cpp.o
+.PHONY : src/renderer/basic_renderer.o
+
+# target to build an object file
+src/renderer/basic_renderer.cpp.o:
+	cd /mnt/d/engine-game-project/build/debug && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.o
+.PHONY : src/renderer/basic_renderer.cpp.o
+
+src/renderer/basic_renderer.i: src/renderer/basic_renderer.cpp.i
+.PHONY : src/renderer/basic_renderer.i
+
+# target to preprocess a source file
+src/renderer/basic_renderer.cpp.i:
+	cd /mnt/d/engine-game-project/build/debug && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.i
+.PHONY : src/renderer/basic_renderer.cpp.i
+
+src/renderer/basic_renderer.s: src/renderer/basic_renderer.cpp.s
+.PHONY : src/renderer/basic_renderer.s
+
+# target to generate assembly for a file
+src/renderer/basic_renderer.cpp.s:
+	cd /mnt/d/engine-game-project/build/debug && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.s
+.PHONY : src/renderer/basic_renderer.cpp.s
+
+src/runtime/camera.o: src/runtime/camera.cpp.o
+.PHONY : src/runtime/camera.o
+
+# target to build an object file
+src/runtime/camera.cpp.o:
+	cd /mnt/d/engine-game-project/build/debug && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.o
+.PHONY : src/runtime/camera.cpp.o
+
+src/runtime/camera.i: src/runtime/camera.cpp.i
+.PHONY : src/runtime/camera.i
+
+# target to preprocess a source file
+src/runtime/camera.cpp.i:
+	cd /mnt/d/engine-game-project/build/debug && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.i
+.PHONY : src/runtime/camera.cpp.i
+
+src/runtime/camera.s: src/runtime/camera.cpp.s
+.PHONY : src/runtime/camera.s
+
+# target to generate assembly for a file
+src/runtime/camera.cpp.s:
+	cd /mnt/d/engine-game-project/build/debug && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.s
+.PHONY : src/runtime/camera.cpp.s
+
+src/runtime/transform.o: src/runtime/transform.cpp.o
+.PHONY : src/runtime/transform.o
+
+# target to build an object file
+src/runtime/transform.cpp.o:
+	cd /mnt/d/engine-game-project/build/debug && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/runtime/transform.cpp.o
+.PHONY : src/runtime/transform.cpp.o
+
+src/runtime/transform.i: src/runtime/transform.cpp.i
+.PHONY : src/runtime/transform.i
+
+# target to preprocess a source file
+src/runtime/transform.cpp.i:
+	cd /mnt/d/engine-game-project/build/debug && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/runtime/transform.cpp.i
+.PHONY : src/runtime/transform.cpp.i
+
+src/runtime/transform.s: src/runtime/transform.cpp.s
+.PHONY : src/runtime/transform.s
+
+# target to generate assembly for a file
+src/runtime/transform.cpp.s:
+	cd /mnt/d/engine-game-project/build/debug && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/runtime/transform.cpp.s
+.PHONY : src/runtime/transform.cpp.s
+
 src/time/frame_timer.o: src/time/frame_timer.cpp.o
 .PHONY : src/time/frame_timer.o
 
@@ -244,6 +316,15 @@ help:
 	@echo "... src/input/input_state.o"
 	@echo "... src/input/input_state.i"
 	@echo "... src/input/input_state.s"
+	@echo "... src/renderer/basic_renderer.o"
+	@echo "... src/renderer/basic_renderer.i"
+	@echo "... src/renderer/basic_renderer.s"
+	@echo "... src/runtime/camera.o"
+	@echo "... src/runtime/camera.i"
+	@echo "... src/runtime/camera.s"
+	@echo "... src/runtime/transform.o"
+	@echo "... src/runtime/transform.i"
+	@echo "... src/runtime/transform.s"
 	@echo "... src/time/frame_timer.o"
 	@echo "... src/time/frame_timer.i"
 	@echo "... src/time/frame_timer.s"

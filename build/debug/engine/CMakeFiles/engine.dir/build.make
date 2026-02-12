@@ -97,10 +97,52 @@ engine/CMakeFiles/engine.dir/src/input/input_state.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/input/input_state.cpp.s"
 	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/engine-game-project/engine/src/input/input_state.cpp -o CMakeFiles/engine.dir/src/input/input_state.cpp.s
 
+engine/CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.o: engine/CMakeFiles/engine.dir/flags.make
+engine/CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.o: /mnt/d/engine-game-project/engine/src/renderer/basic_renderer.cpp
+engine/CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.o: engine/CMakeFiles/engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object engine/CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.o"
+	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.o -MF CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.o.d -o CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.o -c /mnt/d/engine-game-project/engine/src/renderer/basic_renderer.cpp
+
+engine/CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.i"
+	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/d/engine-game-project/engine/src/renderer/basic_renderer.cpp > CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.i
+
+engine/CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.s"
+	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/engine-game-project/engine/src/renderer/basic_renderer.cpp -o CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.s
+
+engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.o: engine/CMakeFiles/engine.dir/flags.make
+engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.o: /mnt/d/engine-game-project/engine/src/runtime/camera.cpp
+engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.o: engine/CMakeFiles/engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.o"
+	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.o -MF CMakeFiles/engine.dir/src/runtime/camera.cpp.o.d -o CMakeFiles/engine.dir/src/runtime/camera.cpp.o -c /mnt/d/engine-game-project/engine/src/runtime/camera.cpp
+
+engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/runtime/camera.cpp.i"
+	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/d/engine-game-project/engine/src/runtime/camera.cpp > CMakeFiles/engine.dir/src/runtime/camera.cpp.i
+
+engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/runtime/camera.cpp.s"
+	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/engine-game-project/engine/src/runtime/camera.cpp -o CMakeFiles/engine.dir/src/runtime/camera.cpp.s
+
+engine/CMakeFiles/engine.dir/src/runtime/transform.cpp.o: engine/CMakeFiles/engine.dir/flags.make
+engine/CMakeFiles/engine.dir/src/runtime/transform.cpp.o: /mnt/d/engine-game-project/engine/src/runtime/transform.cpp
+engine/CMakeFiles/engine.dir/src/runtime/transform.cpp.o: engine/CMakeFiles/engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object engine/CMakeFiles/engine.dir/src/runtime/transform.cpp.o"
+	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/engine.dir/src/runtime/transform.cpp.o -MF CMakeFiles/engine.dir/src/runtime/transform.cpp.o.d -o CMakeFiles/engine.dir/src/runtime/transform.cpp.o -c /mnt/d/engine-game-project/engine/src/runtime/transform.cpp
+
+engine/CMakeFiles/engine.dir/src/runtime/transform.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/runtime/transform.cpp.i"
+	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/d/engine-game-project/engine/src/runtime/transform.cpp > CMakeFiles/engine.dir/src/runtime/transform.cpp.i
+
+engine/CMakeFiles/engine.dir/src/runtime/transform.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/runtime/transform.cpp.s"
+	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/engine-game-project/engine/src/runtime/transform.cpp -o CMakeFiles/engine.dir/src/runtime/transform.cpp.s
+
 engine/CMakeFiles/engine.dir/src/time/frame_timer.cpp.o: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/src/time/frame_timer.cpp.o: /mnt/d/engine-game-project/engine/src/time/frame_timer.cpp
 engine/CMakeFiles/engine.dir/src/time/frame_timer.cpp.o: engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object engine/CMakeFiles/engine.dir/src/time/frame_timer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object engine/CMakeFiles/engine.dir/src/time/frame_timer.cpp.o"
 	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/engine.dir/src/time/frame_timer.cpp.o -MF CMakeFiles/engine.dir/src/time/frame_timer.cpp.o.d -o CMakeFiles/engine.dir/src/time/frame_timer.cpp.o -c /mnt/d/engine-game-project/engine/src/time/frame_timer.cpp
 
 engine/CMakeFiles/engine.dir/src/time/frame_timer.cpp.i: cmake_force
@@ -114,7 +156,7 @@ engine/CMakeFiles/engine.dir/src/time/frame_timer.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/src/engine.cpp.o: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/src/engine.cpp.o: /mnt/d/engine-game-project/engine/src/engine.cpp
 engine/CMakeFiles/engine.dir/src/engine.cpp.o: engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object engine/CMakeFiles/engine.dir/src/engine.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object engine/CMakeFiles/engine.dir/src/engine.cpp.o"
 	cd /mnt/d/engine-game-project/build/debug/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/engine.dir/src/engine.cpp.o -MF CMakeFiles/engine.dir/src/engine.cpp.o.d -o CMakeFiles/engine.dir/src/engine.cpp.o -c /mnt/d/engine-game-project/engine/src/engine.cpp
 
 engine/CMakeFiles/engine.dir/src/engine.cpp.i: cmake_force
@@ -129,6 +171,9 @@ engine/CMakeFiles/engine.dir/src/engine.cpp.s: cmake_force
 engine_OBJECTS = \
 "CMakeFiles/engine.dir/src/core/logger.cpp.o" \
 "CMakeFiles/engine.dir/src/input/input_state.cpp.o" \
+"CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.o" \
+"CMakeFiles/engine.dir/src/runtime/camera.cpp.o" \
+"CMakeFiles/engine.dir/src/runtime/transform.cpp.o" \
 "CMakeFiles/engine.dir/src/time/frame_timer.cpp.o" \
 "CMakeFiles/engine.dir/src/engine.cpp.o"
 
@@ -137,11 +182,14 @@ engine_EXTERNAL_OBJECTS =
 
 engine/libengine.a: engine/CMakeFiles/engine.dir/src/core/logger.cpp.o
 engine/libengine.a: engine/CMakeFiles/engine.dir/src/input/input_state.cpp.o
+engine/libengine.a: engine/CMakeFiles/engine.dir/src/renderer/basic_renderer.cpp.o
+engine/libengine.a: engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.o
+engine/libengine.a: engine/CMakeFiles/engine.dir/src/runtime/transform.cpp.o
 engine/libengine.a: engine/CMakeFiles/engine.dir/src/time/frame_timer.cpp.o
 engine/libengine.a: engine/CMakeFiles/engine.dir/src/engine.cpp.o
 engine/libengine.a: engine/CMakeFiles/engine.dir/build.make
 engine/libengine.a: engine/CMakeFiles/engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libengine.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libengine.a"
 	cd /mnt/d/engine-game-project/build/debug/engine && $(CMAKE_COMMAND) -P CMakeFiles/engine.dir/cmake_clean_target.cmake
 	cd /mnt/d/engine-game-project/build/debug/engine && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/engine.dir/link.txt --verbose=$(VERBOSE)
 

@@ -95,8 +95,9 @@ apps/sandbox/sandbox: apps/sandbox/CMakeFiles/sandbox.dir/build.make
 apps/sandbox/sandbox: engine/libengine.a
 apps/sandbox/sandbox: /home/matkabal/vcpkg/installed/x64-linux/lib/libSDL2.a
 apps/sandbox/sandbox: /home/matkabal/vcpkg/installed/x64-linux/lib/libSDL2main.a
-apps/sandbox/sandbox: /home/matkabal/vcpkg/installed/x64-linux/lib/libbgfx.a
 apps/sandbox/sandbox: /home/matkabal/vcpkg/installed/x64-linux/lib/libfmt.a
+apps/sandbox/sandbox: /home/matkabal/vcpkg/installed/x64-linux/lib/libSDL2.a
+apps/sandbox/sandbox: /home/matkabal/vcpkg/installed/x64-linux/lib/libbgfx.a
 apps/sandbox/sandbox: /home/matkabal/vcpkg/installed/x64-linux/lib/libbimg.a
 apps/sandbox/sandbox: /home/matkabal/vcpkg/installed/x64-linux/lib/libbx.a
 apps/sandbox/sandbox: /home/matkabal/vcpkg/installed/x64-linux/lib/libminiz.a

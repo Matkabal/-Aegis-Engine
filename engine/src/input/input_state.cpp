@@ -66,11 +66,11 @@ bool InputState::wasReleased(Key key) const {
   return was_released(key);
 }
 
-Vec2 InputState::mouse_position() const {
+math::Vec2 InputState::mouse_position() const {
   return mouse_position_;
 }
 
-Vec2 InputState::mouse_delta() const {
+math::Vec2 InputState::mouse_delta() const {
   return mouse_delta_;
 }
 
@@ -78,11 +78,11 @@ float InputState::scroll_delta() const {
   return scroll_delta_;
 }
 
-Vec2 InputState::mousePosition() const {
+math::Vec2 InputState::mousePosition() const {
   return mouse_position();
 }
 
-Vec2 InputState::mouseDelta() const {
+math::Vec2 InputState::mouseDelta() const {
   return mouse_delta();
 }
 
