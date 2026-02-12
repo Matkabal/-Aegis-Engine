@@ -58,6 +58,40 @@ log() {
   printf "\n==> %s\n" "$1"
 }
 
+is_wsl() {
+  grep -qiE "(microsoft|wsl)" /proc/version 2>/dev/null
+}
+
+setup_graphics_env() {
+  if [[ -z "${XDG_RUNTIME_DIR:-}" && -d "/mnt/wslg/runtime-dir" ]]; then
+    export XDG_RUNTIME_DIR="/mnt/wslg/runtime-dir"
+  fi
+  if [[ -z "${WAYLAND_DISPLAY:-}" && -S "${XDG_RUNTIME_DIR:-}/wayland-0" ]]; then
+    export WAYLAND_DISPLAY="wayland-0"
+  fi
+  if [[ -z "${DISPLAY:-}" ]]; then
+    export DISPLAY=":0"
+  fi
+
+  if [[ -z "${SDL_VIDEODRIVER:-}" ]]; then
+    if [[ -S "/mnt/wslg/runtime-dir/wayland-0" ]] || [[ -n "${WAYLAND_DISPLAY:-}" && -S "${XDG_RUNTIME_DIR:-}/$WAYLAND_DISPLAY" ]]; then
+      export SDL_VIDEODRIVER="wayland"
+    else
+      export SDL_VIDEODRIVER="x11"
+    fi
+  fi
+
+  if [[ -z "${BGFX_RENDERER_TYPE:-}" ]]; then
+    if is_wsl; then
+      export BGFX_RENDERER_TYPE="noop"
+    else
+      export BGFX_RENDERER_TYPE="opengl"
+    fi
+  fi
+
+  log "Runtime video setup: SDL_VIDEODRIVER=${SDL_VIDEODRIVER} BGFX_RENDERER_TYPE=${BGFX_RENDERER_TYPE} DISPLAY=${DISPLAY} WAYLAND_DISPLAY=${WAYLAND_DISPLAY:-<unset>}"
+}
+
 cmake_configure() {
   local config_dir="$1"
   local build_type="$2"
@@ -110,6 +144,8 @@ log "Building Release"
 cmake --build "$RELEASE_DIR" --config Release
 
 if [[ $RUN_SANDBOX -eq 1 ]]; then
+  setup_graphics_env
+
   log "Running sandbox (Debug)"
   DEBUG_BIN="$(find_sandbox_binary "$DEBUG_DIR" "Debug")"
   "$DEBUG_BIN"

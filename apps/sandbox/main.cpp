@@ -12,6 +12,7 @@
 #endif
 
 #include <cstdint>
+#include <cstdlib>
 #include <iostream>
 #include <string>
 
@@ -91,6 +92,29 @@ bool get_native_handles(SDL_Window* window, void** out_nwh, void** out_ndt, std:
   return true;
 }
 
+bgfx::RendererType::Enum renderer_from_env() {
+  const char* value = std::getenv("BGFX_RENDERER_TYPE");
+  if (value == nullptr) {
+    return bgfx::RendererType::Count;
+  }
+
+  const std::string renderer(value);
+  if (renderer == "opengl") {
+    return bgfx::RendererType::OpenGL;
+  }
+  if (renderer == "gles" || renderer == "opengles") {
+    return bgfx::RendererType::OpenGLES;
+  }
+  if (renderer == "vulkan") {
+    return bgfx::RendererType::Vulkan;
+  }
+  if (renderer == "noop") {
+    return bgfx::RendererType::Noop;
+  }
+
+  return bgfx::RendererType::Count;
+}
+
 bool init_bgfx(SDL_Window* window, int width, int height, engine::core::Logger& logger) {
   void* nwh = nullptr;
   void* ndt = nullptr;
@@ -105,7 +129,7 @@ bool init_bgfx(SDL_Window* window, int width, int height, engine::core::Logger& 
   }
 
   bgfx::Init init{};
-  init.type = bgfx::RendererType::Count;
+  init.type = renderer_from_env();
   init.platformData.nwh = nwh;
   init.platformData.ndt = ndt;
   init.resolution.width = static_cast<uint32_t>(width);
@@ -164,10 +188,21 @@ void draw_stats_overlay(const engine::time::FrameMetrics& metrics,
 int main() {
   engine::core::Logger logger;
 
+  const int video_driver_count = SDL_GetNumVideoDrivers();
+  std::string video_drivers = "SDL video drivers available:";
+  for (int i = 0; i < video_driver_count; ++i) {
+    const char* name = SDL_GetVideoDriver(i);
+    video_drivers += ' ';
+    video_drivers += (name != nullptr ? name : "<null>");
+  }
+  logger.info(video_drivers);
+
   if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
     logger.error(std::string("SDL_Init failed: ") + SDL_GetError());
     return 1;
   }
+  logger.info(std::string("SDL current video driver: ") +
+              (SDL_GetCurrentVideoDriver() != nullptr ? SDL_GetCurrentVideoDriver() : "<null>"));
 
   constexpr int initial_width = 1280;
   constexpr int initial_height = 720;

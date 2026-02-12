@@ -375,6 +375,9 @@ apps/sandbox/CMakeFiles/sandbox.dir/main.cpp.o: \
  /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_locale.h \
  /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_misc.h \
  /home/matkabal/vcpkg/installed/x64-linux/include/SDL2/SDL_syswm.h \
+ /usr/include/X11/Xlib.h /usr/include/X11/X.h \
+ /usr/include/X11/Xfuncproto.h /usr/include/X11/Xosdefs.h \
+ /usr/include/X11/Xatom.h \
  /home/matkabal/vcpkg/installed/x64-linux/include/bgfx/bgfx.h \
  /home/matkabal/vcpkg/installed/x64-linux/include/bgfx/defines.h \
  /home/matkabal/vcpkg/installed/x64-linux/include/bgfx/platform.h \

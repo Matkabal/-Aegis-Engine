@@ -76,6 +76,20 @@ if [[ $RUN_APT -eq 1 ]]; then
     automake
     libtool
     python3-venv
+    libwayland-dev
+    wayland-protocols
+    libxkbcommon-dev
+    libx11-dev
+    libxext-dev
+    libxrandr-dev
+    libxrender-dev
+    libxi-dev
+    libxfixes-dev
+    libxcursor-dev
+    libxinerama-dev
+    libdrm-dev
+    libgbm-dev
+    libudev-dev
   )
   MISSING_APT_PACKAGES=()
 
@@ -115,9 +129,8 @@ BGFX_SPEC="bgfx"
 FMT_SPEC="fmt"
 
 MISSING_VCPKG_PKGS=()
-if ! is_vcpkg_pkg_installed "sdl2"; then
-  MISSING_VCPKG_PKGS+=("${SDL2_SPEC}")
-fi
+# Always request full SDL2 feature set so vcpkg can upgrade from core-only installs.
+MISSING_VCPKG_PKGS+=("${SDL2_SPEC}")
 if ! is_vcpkg_pkg_installed "bgfx"; then
   MISSING_VCPKG_PKGS+=("${BGFX_SPEC}")
 fi
