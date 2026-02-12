@@ -165,3 +165,8 @@
 [2026-02-12 15:42:29][INFO][tid=129101223331648] M1 main loop started.
 [2026-02-12 15:42:58][INFO][tid=129101223331648] M1 main loop ended.
 [2026-02-12 15:42:58][INFO][tid=129101223331648] M1 clean shutdown completed.
+[2026-02-12 15:54:13][WARN][tid=124482846107456] SDL_GetWindowWMInfo failed: That operation is not supported
+[2026-02-12 15:54:13][INFO][tid=124482846107456] Loaded mesh from path: assets/models/m2-triangle.gltf
+[2026-02-12 15:54:13][INFO][tid=124482846107456] M2 main loop started.
+[2026-02-12 15:54:18][INFO][tid=124482846107456] M2 main loop ended.
+[2026-02-12 15:54:29][INFO][tid=124482846107456] M2 clean shutdown completed.

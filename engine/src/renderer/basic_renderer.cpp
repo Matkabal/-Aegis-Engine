@@ -142,7 +142,7 @@ void BasicRenderer::begin_frame(const uint32_t clear_color_rgba) {
   SDL_RenderFillRectF(renderer, &center_rect);
 }
 
-void BasicRenderer::submit_mesh(const runtime::Transform& transform, const runtime::Camera& camera) {
+void BasicRenderer::submit_mesh(const assets::MeshData* mesh, const math::Mat4& world_matrix, const runtime::Camera& camera) {
 #ifdef ENGINE_HAS_BGFX
   if (using_bgfx_ && enabled_) {
     draw_calls_ += 1;
@@ -156,20 +156,39 @@ void BasicRenderer::submit_mesh(const runtime::Transform& transform, const runti
 
   (void)camera;
 
-  // Robust 2D fallback path: keep triangle visible and movable in SDL renderer mode.
-  constexpr math::Vec3 local_vertices[3] = {
+  constexpr math::Vec3 fallback_vertices[3] = {
       {-0.12F, -0.12F, 0.0F},
       {0.12F, -0.12F, 0.0F},
       {0.0F, 0.14F, 0.0F},
   };
+  const math::Vec3* vertices = fallback_vertices;
+  size_t vertex_count = 3;
+  if (mesh != nullptr && mesh->vertices.size() >= 3) {
+    vertices = &mesh->vertices[0].position;
+    vertex_count = mesh->vertices.size();
+  }
 
   SDL_Vertex verts[3]{};
   for (int i = 0; i < 3; ++i) {
-    const float x = local_vertices[i].x + transform.position.x;
-    const float y = local_vertices[i].y + transform.position.y;
-    const math::Vec4 clip{x, y, 0.0F, 1.0F};
+    const size_t idx = (mesh != nullptr && !mesh->indices.empty() && static_cast<size_t>(i) < mesh->indices.size())
+                           ? static_cast<size_t>(mesh->indices[static_cast<size_t>(i)])
+                           : static_cast<size_t>(i);
+    if (idx >= vertex_count) {
+      return;
+    }
 
-    verts[i].position = to_screen(clip, width_, height_);
+    const float x = vertices[idx].x;
+    const float y = vertices[idx].y;
+    const float z = vertices[idx].z;
+    const math::Vec4 model{x, y, z, 1.0F};
+    const math::Vec4 transformed = math::multiply_vec4(world_matrix, model);
+    const float sx = transformed.x;
+    const float sy = transformed.y;
+    const math::Vec4 clip{x, y, 0.0F, 1.0F};
+    (void)clip;
+    const math::Vec4 screen_clip{sx, sy, 0.0F, 1.0F};
+
+    verts[i].position = to_screen(screen_clip, width_, height_);
     verts[i].color = SDL_Color{255, 200, 80, 255};
     verts[i].tex_coord = SDL_FPoint{0.0F, 0.0F};
   }

@@ -129,12 +129,12 @@ engine/clean: engine/CMakeFiles/engine.dir/clean
 engine/CMakeFiles/engine.dir/all:
 	$(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/depend
 	$(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target engine"
 .PHONY : engine/CMakeFiles/engine.dir/all
 
 # Build rule for subdir invocation for target.
 engine/CMakeFiles/engine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/engine-game-project/build/debug/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/engine-game-project/build/debug/CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 engine/CMakeFiles/engine.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/engine-game-project/build/debug/CMakeFiles 0
 .PHONY : engine/CMakeFiles/engine.dir/rule
@@ -155,12 +155,12 @@ engine/CMakeFiles/engine.dir/clean:
 apps/sandbox/CMakeFiles/sandbox.dir/all: engine/CMakeFiles/engine.dir/all
 	$(MAKE) $(MAKESILENT) -f apps/sandbox/CMakeFiles/sandbox.dir/build.make apps/sandbox/CMakeFiles/sandbox.dir/depend
 	$(MAKE) $(MAKESILENT) -f apps/sandbox/CMakeFiles/sandbox.dir/build.make apps/sandbox/CMakeFiles/sandbox.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=9,10 "Built target sandbox"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/d/engine-game-project/build/debug/CMakeFiles --progress-num=13,14 "Built target sandbox"
 .PHONY : apps/sandbox/CMakeFiles/sandbox.dir/all
 
 # Build rule for subdir invocation for target.
 apps/sandbox/CMakeFiles/sandbox.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/engine-game-project/build/debug/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/engine-game-project/build/debug/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 apps/sandbox/CMakeFiles/sandbox.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/engine-game-project/build/debug/CMakeFiles 0
 .PHONY : apps/sandbox/CMakeFiles/sandbox.dir/rule

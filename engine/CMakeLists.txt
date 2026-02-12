@@ -2,10 +2,14 @@ add_library(engine)
 
 target_sources(engine
   PRIVATE
+    src/assets/asset_manager.cpp
+    src/assets/gltf_loader.cpp
+    src/assets/mesh_data.cpp
     src/core/logger.cpp
     src/input/input_state.cpp
     src/renderer/basic_renderer.cpp
     src/runtime/camera.cpp
+    src/runtime/scene.cpp
     src/runtime/transform.cpp
     src/time/frame_timer.cpp
     src/engine.cpp

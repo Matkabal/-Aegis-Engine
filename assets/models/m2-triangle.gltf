@@ -1,0 +1,16 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "Aegis Engine M2 Stub"
+  },
+  "scene": 0,
+  "scenes": [
+    {"nodes": [0]}
+  ],
+  "nodes": [
+    {"name": "TriangleNode"}
+  ],
+  "meshes": [
+    {"name": "TriangleMesh"}
+  ]
+}

@@ -1,9 +1,11 @@
+#include "engine/assets/asset_manager.h"
 #include "engine/core/logger.h"
 #include "engine/engine.h"
 #include "engine/input/input_state.h"
+#include "engine/math/mat4.h"
 #include "engine/renderer/basic_renderer.h"
 #include "engine/runtime/camera.h"
-#include "engine/runtime/transform.h"
+#include "engine/runtime/scene.h"
 #include "engine/time/frame_timer.h"
 
 #include "SDL.h"
@@ -52,9 +54,9 @@ engine::input::Key map_sdl_key(const SDL_Keycode keycode) {
 engine::renderer::NativeWindowData query_native_window_data(SDL_Window* window, engine::core::Logger& logger) {
   engine::renderer::NativeWindowData data{};
   data.sdl_window = window;
+
   SDL_SysWMinfo wm_info;
   SDL_VERSION(&wm_info.version);
-
   if (SDL_GetWindowWMInfo(window, &wm_info) != SDL_TRUE) {
     logger.warn(std::string("SDL_GetWindowWMInfo failed: ") + SDL_GetError());
     return data;
@@ -94,6 +96,8 @@ engine::renderer::NativeWindowData query_native_window_data(SDL_Window* window, 
 void draw_overlay(const engine::time::FrameMetrics& metrics,
                   const engine::runtime::Camera& camera,
                   const engine::renderer::BasicRenderer& renderer,
+                  const engine::runtime::Scene& scene,
+                  const engine::assets::AssetManager& assets,
                   const bool show_overlay) {
   if (!show_overlay || !renderer.enabled()) {
     return;
@@ -103,8 +107,9 @@ void draw_overlay(const engine::time::FrameMetrics& metrics,
   if (!renderer.using_bgfx_backend()) {
     return;
   }
+
   bgfx::dbgTextClear(0, false);
-  bgfx::dbgTextPrintf(0, 0, 0x0f, "M1 Sandbox (F1 overlay)");
+  bgfx::dbgTextPrintf(0, 0, 0x0f, "M2 Sandbox (F1 overlay)");
   bgfx::dbgTextPrintf(0, 2, 0x0f, "FPS: %.2f", metrics.fps);
   bgfx::dbgTextPrintf(0, 3, 0x0f, "Frame: %.3f ms", metrics.frame_ms);
   bgfx::dbgTextPrintf(0,
@@ -114,11 +119,15 @@ void draw_overlay(const engine::time::FrameMetrics& metrics,
                       camera.position.x,
                       camera.position.y,
                       camera.position.z);
-  bgfx::dbgTextPrintf(0, 5, 0x0f, "Draw Calls: %u", renderer.draw_calls());
+  bgfx::dbgTextPrintf(0, 5, 0x0f, "Entities: %u", scene.entity_count());
+  bgfx::dbgTextPrintf(0, 6, 0x0f, "Meshes: %u", assets.mesh_count());
+  bgfx::dbgTextPrintf(0, 7, 0x0f, "Draw Calls: %u", renderer.draw_calls());
 #else
   (void)metrics;
   (void)camera;
   (void)renderer;
+  (void)scene;
+  (void)assets;
 #endif
 }
 
@@ -135,7 +144,7 @@ int main() {
   constexpr int initial_width = 1280;
   constexpr int initial_height = 720;
 
-  SDL_Window* window = SDL_CreateWindow("Witcher Engine - M1",
+  SDL_Window* window = SDL_CreateWindow("Witcher Engine - M2",
                                         SDL_WINDOWPOS_CENTERED,
                                         SDL_WINDOWPOS_CENTERED,
                                         initial_width,
@@ -152,18 +161,33 @@ int main() {
 
   engine::renderer::BasicRenderer renderer;
   const engine::renderer::NativeWindowData native_window_data = query_native_window_data(window, logger);
-  const bool renderer_enabled = renderer.init(width, height, native_window_data);
-  if (!renderer_enabled) {
-    logger.warn("Renderer initialized in fallback mode (no backend output).");
+  if (!renderer.init(width, height, native_window_data)) {
+    logger.error("Renderer failed to initialize.");
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    return 1;
   }
 
   engine::runtime::Camera camera;
   camera.set_viewport(width, height);
 
-  engine::runtime::Transform transform;
-  transform.position = {0.0F, 0.0F, 0.0F};
-  transform.scale = {1.0F, 1.0F, 1.0F};
-  transform.mark_dirty();
+  engine::assets::AssetManager asset_manager(&logger);
+  const engine::assets::MeshHandle mesh_handle = asset_manager.load_mesh("assets/models/m2-triangle.gltf");
+
+  engine::runtime::Scene scene;
+  const engine::runtime::Entity e0 = scene.create_entity();
+  auto& t0 = scene.transform(e0);
+  t0.position = {-0.4F, 0.0F, 0.0F};
+  t0.scale = {1.0F, 1.0F, 1.0F};
+  t0.mark_dirty();
+  scene.add_mesh_component(e0, engine::runtime::MeshComponent{mesh_handle});
+
+  const engine::runtime::Entity e1 = scene.create_entity();
+  auto& t1 = scene.transform(e1);
+  t1.position = {0.4F, 0.0F, 0.0F};
+  t1.scale = {1.0F, 1.0F, 1.0F};
+  t1.mark_dirty();
+  scene.add_mesh_component(e1, engine::runtime::MeshComponent{mesh_handle});
 
   engine::Engine engine;
   engine.initialize();
@@ -175,7 +199,7 @@ int main() {
   bool running = true;
   bool show_overlay = true;
 
-  logger.info("M1 main loop started.");
+  logger.info("M2 main loop started.");
 
   while (running) {
     input.begin_frame();
@@ -186,21 +210,17 @@ int main() {
       case SDL_QUIT:
         running = false;
         break;
-      case SDL_KEYDOWN: {
-        if (event.key.repeat != 0) {
-          break;
-        }
-
-        const engine::input::Key key = map_sdl_key(event.key.keysym.sym);
-        input.on_key_down(key);
-
-        if (key == engine::input::Key::Escape) {
-          running = false;
-        } else if (key == engine::input::Key::F1) {
-          show_overlay = !show_overlay;
+      case SDL_KEYDOWN:
+        if (event.key.repeat == 0) {
+          const engine::input::Key key = map_sdl_key(event.key.keysym.sym);
+          input.on_key_down(key);
+          if (key == engine::input::Key::Escape) {
+            running = false;
+          } else if (key == engine::input::Key::F1) {
+            show_overlay = !show_overlay;
+          }
         }
         break;
-      }
       case SDL_KEYUP:
         input.on_key_up(map_sdl_key(event.key.keysym.sym));
         break;
@@ -226,34 +246,50 @@ int main() {
     const engine::time::FrameMetrics metrics = timer.tick();
 
     camera.update(static_cast<float>(metrics.delta_seconds), input);
-    bool transform_moved = false;
+
+    auto& player_transform = scene.transform(e0);
+    bool moved = false;
     const float object_speed = 1.5F * static_cast<float>(metrics.delta_seconds);
     if (input.isDown(engine::input::Key::Left)) {
-      transform.position.x -= object_speed;
-      transform_moved = true;
+      player_transform.position.x -= object_speed;
+      moved = true;
     }
     if (input.isDown(engine::input::Key::Right)) {
-      transform.position.x += object_speed;
-      transform_moved = true;
+      player_transform.position.x += object_speed;
+      moved = true;
     }
     if (input.isDown(engine::input::Key::Up)) {
-      transform.position.y += object_speed;
-      transform_moved = true;
+      player_transform.position.y += object_speed;
+      moved = true;
     }
     if (input.isDown(engine::input::Key::Down)) {
-      transform.position.y -= object_speed;
-      transform_moved = true;
+      player_transform.position.y -= object_speed;
+      moved = true;
     }
-    if (transform_moved) {
-      transform.mark_dirty();
+    if (moved) {
+      player_transform.mark_dirty();
     }
-    transform.update_matrix();
 
     engine.update(metrics.delta_seconds);
 
     renderer.begin_frame();
-    renderer.submit_mesh(transform, camera);
-    draw_overlay(metrics, camera, renderer, show_overlay);
+
+    for (const engine::runtime::Entity entity : scene.entities()) {
+      const engine::runtime::MeshComponent* mesh_component = scene.find_mesh_component(entity);
+      if (mesh_component == nullptr) {
+        continue;
+      }
+
+      const engine::assets::MeshData* mesh = asset_manager.get_mesh(mesh_component->mesh);
+      engine::math::Mat4 world = engine::math::identity();
+      if (!scene.compute_world_matrix(entity, &world)) {
+        continue;
+      }
+
+      renderer.submit_mesh(mesh, world, camera);
+    }
+
+    draw_overlay(metrics, camera, renderer, scene, asset_manager, show_overlay);
     renderer.end_frame();
 
     engine.render();
@@ -263,7 +299,7 @@ int main() {
     }
   }
 
-  logger.info("M1 main loop ended.");
+  logger.info("M2 main loop ended.");
 
   engine.shutdown();
   renderer.shutdown();
@@ -271,6 +307,6 @@ int main() {
   SDL_DestroyWindow(window);
   SDL_Quit();
 
-  logger.info("M1 clean shutdown completed.");
+  logger.info("M2 clean shutdown completed.");
   return 0;
 }

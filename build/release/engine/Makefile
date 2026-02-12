@@ -130,6 +130,78 @@ engine/fast:
 	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/build
 .PHONY : engine/fast
 
+src/assets/asset_manager.o: src/assets/asset_manager.cpp.o
+.PHONY : src/assets/asset_manager.o
+
+# target to build an object file
+src/assets/asset_manager.cpp.o:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/assets/asset_manager.cpp.o
+.PHONY : src/assets/asset_manager.cpp.o
+
+src/assets/asset_manager.i: src/assets/asset_manager.cpp.i
+.PHONY : src/assets/asset_manager.i
+
+# target to preprocess a source file
+src/assets/asset_manager.cpp.i:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/assets/asset_manager.cpp.i
+.PHONY : src/assets/asset_manager.cpp.i
+
+src/assets/asset_manager.s: src/assets/asset_manager.cpp.s
+.PHONY : src/assets/asset_manager.s
+
+# target to generate assembly for a file
+src/assets/asset_manager.cpp.s:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/assets/asset_manager.cpp.s
+.PHONY : src/assets/asset_manager.cpp.s
+
+src/assets/gltf_loader.o: src/assets/gltf_loader.cpp.o
+.PHONY : src/assets/gltf_loader.o
+
+# target to build an object file
+src/assets/gltf_loader.cpp.o:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/assets/gltf_loader.cpp.o
+.PHONY : src/assets/gltf_loader.cpp.o
+
+src/assets/gltf_loader.i: src/assets/gltf_loader.cpp.i
+.PHONY : src/assets/gltf_loader.i
+
+# target to preprocess a source file
+src/assets/gltf_loader.cpp.i:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/assets/gltf_loader.cpp.i
+.PHONY : src/assets/gltf_loader.cpp.i
+
+src/assets/gltf_loader.s: src/assets/gltf_loader.cpp.s
+.PHONY : src/assets/gltf_loader.s
+
+# target to generate assembly for a file
+src/assets/gltf_loader.cpp.s:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/assets/gltf_loader.cpp.s
+.PHONY : src/assets/gltf_loader.cpp.s
+
+src/assets/mesh_data.o: src/assets/mesh_data.cpp.o
+.PHONY : src/assets/mesh_data.o
+
+# target to build an object file
+src/assets/mesh_data.cpp.o:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/assets/mesh_data.cpp.o
+.PHONY : src/assets/mesh_data.cpp.o
+
+src/assets/mesh_data.i: src/assets/mesh_data.cpp.i
+.PHONY : src/assets/mesh_data.i
+
+# target to preprocess a source file
+src/assets/mesh_data.cpp.i:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/assets/mesh_data.cpp.i
+.PHONY : src/assets/mesh_data.cpp.i
+
+src/assets/mesh_data.s: src/assets/mesh_data.cpp.s
+.PHONY : src/assets/mesh_data.s
+
+# target to generate assembly for a file
+src/assets/mesh_data.cpp.s:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/assets/mesh_data.cpp.s
+.PHONY : src/assets/mesh_data.cpp.s
+
 src/core/logger.o: src/core/logger.cpp.o
 .PHONY : src/core/logger.o
 
@@ -250,6 +322,30 @@ src/runtime/camera.cpp.s:
 	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/runtime/camera.cpp.s
 .PHONY : src/runtime/camera.cpp.s
 
+src/runtime/scene.o: src/runtime/scene.cpp.o
+.PHONY : src/runtime/scene.o
+
+# target to build an object file
+src/runtime/scene.cpp.o:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/runtime/scene.cpp.o
+.PHONY : src/runtime/scene.cpp.o
+
+src/runtime/scene.i: src/runtime/scene.cpp.i
+.PHONY : src/runtime/scene.i
+
+# target to preprocess a source file
+src/runtime/scene.cpp.i:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/runtime/scene.cpp.i
+.PHONY : src/runtime/scene.cpp.i
+
+src/runtime/scene.s: src/runtime/scene.cpp.s
+.PHONY : src/runtime/scene.s
+
+# target to generate assembly for a file
+src/runtime/scene.cpp.s:
+	cd /mnt/d/engine-game-project/build/release && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/runtime/scene.cpp.s
+.PHONY : src/runtime/scene.cpp.s
+
 src/runtime/transform.o: src/runtime/transform.cpp.o
 .PHONY : src/runtime/transform.o
 
@@ -307,6 +403,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... engine"
+	@echo "... src/assets/asset_manager.o"
+	@echo "... src/assets/asset_manager.i"
+	@echo "... src/assets/asset_manager.s"
+	@echo "... src/assets/gltf_loader.o"
+	@echo "... src/assets/gltf_loader.i"
+	@echo "... src/assets/gltf_loader.s"
+	@echo "... src/assets/mesh_data.o"
+	@echo "... src/assets/mesh_data.i"
+	@echo "... src/assets/mesh_data.s"
 	@echo "... src/core/logger.o"
 	@echo "... src/core/logger.i"
 	@echo "... src/core/logger.s"
@@ -322,6 +427,9 @@ help:
 	@echo "... src/runtime/camera.o"
 	@echo "... src/runtime/camera.i"
 	@echo "... src/runtime/camera.s"
+	@echo "... src/runtime/scene.o"
+	@echo "... src/runtime/scene.i"
+	@echo "... src/runtime/scene.s"
 	@echo "... src/runtime/transform.o"
 	@echo "... src/runtime/transform.i"
 	@echo "... src/runtime/transform.s"

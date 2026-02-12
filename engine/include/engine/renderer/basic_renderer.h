@@ -1,5 +1,6 @@
 #pragma once
 
+#include "engine/assets/mesh_data.h"
 #include "engine/math/mat4.h"
 #include "engine/runtime/camera.h"
 #include "engine/runtime/transform.h"
@@ -22,7 +23,7 @@ public:
   void resize(int width, int height);
 
   void begin_frame(uint32_t clear_color_rgba = 0x1e1e28ffU);
-  void submit_mesh(const runtime::Transform& transform, const runtime::Camera& camera);
+  void submit_mesh(const assets::MeshData* mesh, const math::Mat4& world_matrix, const runtime::Camera& camera);
   void end_frame();
 
   bool enabled() const;
