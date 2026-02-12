@@ -33,3 +33,6 @@
 [2026-02-12 11:22:05][INFO][tid=128572715996992] Main loop started.
 [2026-02-12 11:22:06][INFO][tid=128572715996992] Main loop ended.
 [2026-02-12 11:22:06][INFO][tid=128572715996992] Clean shutdown completed.
+[2026-02-12 11:22:17][ERROR][tid=132163818112832] SDL_GetWindowWMInfo failed: That operation is not supported
+[2026-02-12 11:22:17][WARN][tid=132163818112832] Falling back to no-renderer mode for this run.
+[2026-02-12 11:22:17][INFO][tid=132163818112832] Main loop started.
